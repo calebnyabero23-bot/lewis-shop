@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCN SHOP | Mobile Ready</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="orderPopup" class="popup-overlay">
+        <div class="popup-content">
+            <i class="fa fa-check-circle success-icon"></i>
+            <h2>Order Received!</h2>
+            <p>Thank you for choosing <strong>NCN SHOP</strong>. We will process your order and contact you shortly.</p>
+            <button class="btn" onclick="closePopup()">Great!</button>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo" onclick="showPage('home')">NCN SHOP</div>
+            
+            <div class="nav-icons">
+                <div class="cart-trigger" onclick="showPage('cart')">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('products')">Shop</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('login')">Login</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar-container">
+            <input type="text" id="searchInput" placeholder="Search NCN SHOP...">
+            <button onclick="searchProduct()"><i class="fa fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>Quality items at NCN SHOP</h1>
+                <p>Electronics, Fashion, and Footwear</p>
+                <button class="btn" onclick="showPage('products')">Shop Collection</button>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-item" onclick="filterCategory('Electronics')">Electronics</div>
+                <div class="cat-item" onclick="filterCategory('Clothes')">Clothes</div>
+                <div class="cat-item" onclick="filterCategory('Shoes')">Shoes</div>
+            </div>
+        </section>
+
+        <section id="products" class="page">
+            <h2 class="title">Our Products</h2>
+            <div class="grid" id="productGrid"></div>
+        </section>
+
+        <section id="single-product" class="page">
+            <div id="productDetails"></div>
+        </section>
+
+        <section id="cart" class="page">
+            <h2 class="title">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div class="cart-footer">
+                <h3>Total: KES <span id="totalPrice">0</span></h3>
+                <button class="btn block" onclick="showPage('checkout')">Checkout Now</button>
+            </div>
+        </section>
+
+        <section id="checkout" class="page">
+            <h2 class="title">Delivery Details</h2>
+            <form class="form" onsubmit="confirmOrder(event)">
+                <input type="text" placeholder="Full Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Address / Estate / Room No" required></textarea>
+                <button type="submit" class="btn block">Place My Order</button>
+            </form>
+        </section>
+
+        <section id="admin" class="page">
+            <h2 class="title">Admin Portal</h2>
+            <div class="form">
+                <h3>Add Product</h3>
+                <input type="text" id="adminName" placeholder="Product Name">
+                <input type="number" id="adminPrice" placeholder="Price">
+                <input type="text" id="adminImg" placeholder="Image Link">
+                <select id="adminCat">
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Shoes">Shoes</option>
+                </select>
+                <button class="btn" onclick="adminAdd()">Upload</button>
+            </div>
+        </section>
+
+        <section id="about" class="page">
+            <h2 class="title">About Us</h2>
+            <div class="card">
+                <p><strong>Founder:</strong> Caleb Nyabero</p>
+                <p><strong>Mission:</strong> To provide quality goods at the best prices.</p>
+                <p><strong>Trust:</strong> Secure payment and fast delivery are our core values.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h2 class="title">Contact Us</h2>
+            <div class="card">
+                <p><i class="fa fa-phone"></i> 0768766155</p>
+                <p><i class="fa fa-envelope"></i> calebnyabero23@gmail.com</p>
+                <a href="https://wa.me/254768766155" class="wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+                <br><br>
+                <input type="text" placeholder="Your Name" class="input-m">
+                <textarea placeholder="Message" class="input-m"></textarea>
+                <button class="btn">Send</button>
+            </div>
+        </section>
+
+        <section id="login" class="page">
+            <h2 class="title">Login</h2>
+            <form class="form">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button type="button" class="btn block">Login</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NCN SHOP. Quality First.</p>
+        <p>Contact: 0768766155</p>
+        <span onclick="showPage('admin')" style="opacity: 0.1; cursor: pointer;">.</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
